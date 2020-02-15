@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        form {
+            border:solid;padding-top:2%;
+            padding-left: 2%; 
+            padding-bottom: 2%;
+            width: 40%;
+        }
+        select {
+            box-sizing: border-box;
+            margin: 8px 0;
+            }
+        input[type=text] {
+            box-sizing: border-box;
+            margin: 8px 0;
+        }
+        input[type=date] {
+            box-sizing: border-box;
+            margin: 8px 0;
+        }
+    </style>
+    <script>
+        function verify(){
+            var title = document.getElementById('title').value;
+            if (title == ""){
+                document.getElementById("results").innerHTML= "Please submit a title.";
+                return false;
+            }
+            else if (title.length<3){
+                document.getElementById("results").innerHTML= "Title must have more than 3 letters.";
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <form onsubmit="return verify()">
+        <p><div id ="results"></div></p>
+            <label>Event Type: </label>
+            <select id="types">
+                <option selected disabled></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select><br>
+            <label>Event Title :  <input type="text" name="title" id="title"></label><br>
+            <label>Event Dates: <input type="date"> to <input type="date"></label><br>
+            <label>Event Posting: <input type="date"></label><br><br>
+            <p>Optional</p>
+            <label><input type="checkbox" name="option"> Is Registration Required?</label><br>
+            <label><input type="checkbox" name="option"> Is this event associated with any Family Programs?</label><br>
+            <label><input type="checkbox" name="option"> Upon Registration Completion, Are Users to Receive an Auto Generated Email?</label><br>
+            <label><input type="checkbox" name="option"> Is There a Point of Contract?</label><br>
+            <label><input type="checkbox" name="option"> Is There a Hosting Command Point of Contact?</label><br><br>
+            <div id ="buttons">
+            <input type="submit" value="Save">
+            <input type="reset" value="Cancel">
+            </div>
+    </form>
+</body>
+</html>
